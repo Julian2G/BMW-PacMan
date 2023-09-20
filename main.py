@@ -1,38 +1,40 @@
-import tkinter as tk
+from tkinter import *
 import random
+from PIL import Image, ImageTk
 
-map = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
-map[0] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-map[1] = [0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0]
-map[2] = [0,3,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,3,0]
-map[3] = [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0]
-map[4] = [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0]
-map[5] = [0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]
-map[6] = [0,2,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,2,0]
-map[7] = [0,2,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,2,0]
-map[8] = [0,2,2,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,2,2,0]
-map[9] = [0,0,0,0,0,0,2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,2,0,0,0,0,0,0]
-map[10] = [-1,-1,-1,-1,-1,0,2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,2,0,-1,-1,-1,-1,-1]
-map[11] = [-1,-1,-1,-1,-1,0,2,0,0,1,1,1,1,1,1,1,1,1,1,0,0,2,0,-1,-1,-1,-1,-1]
-map[12] = [-1,-1,-1,-1,-1,0,2,0,0,1,0,0,0,1,1,0,0,0,1,0,0,2,0,-1,-1,-1,-1,-1]
-map[13] = [0,0,0,0,0,0,2,0,0,1,0,6,-1,-1,-1,-1,9,0,1,0,0,2,0,0,0,0,0,0]
-map[14] = [1,1,1,1,1,1,2,1,1,1,0,-1,-1,-1,-1,-1,-1,0,1,1,1,2,1,1,1,1,1,1]
-map[15] = [0,0,0,0,0,0,2,0,0,1,0,7,-1,-1,-1,-1,8,0,1,0,0,2,0,0,0,0,0,0]
-map[16] = [-1,-1,-1,-1,-1,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,2,0,-1,-1,-1,-1,-1]
-map[17] = [-1,-1,-1,-1,-1,0,2,0,0,1,1,1,1,1,5,1,1,1,1,0,0,2,0,-1,-1,-1,-1,-1]
-map[18] = [-1,-1,-1,-1,-1,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,2,0,-1,-1,-1,-1,-1]
-map[19] = [0,0,0,0,0,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,2,0,0,0,0,0,0]
-map[20] = [0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0]
-map[21] = [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0]
-map[22] = [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0]
-map[23] = [0,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,0]
-map[24] = [0,0,0,2,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,0]
-map[25] = [0,0,0,2,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,0]
-map[26] = [0,2,2,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,2,2,0]
-map[27] = [0,2,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,2,0]
-map[28] = [0,3,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,3,0]
-map[29] = [0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0]
-map[30] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+map = [
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0],
+    [0,3,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,3,0],
+    [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0],
+    [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0],
+    [0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0],
+    [0,2,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,2,0],
+    [0,2,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,2,0],
+    [0,2,2,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,2,2,0],
+    [0,0,0,0,0,0,2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,2,0,0,0,0,0,0],
+    [-1,-1,-1,-1,-1,0,2,0,0,0,0,0,1,0,0,1,0,0,0,0,0,2,0,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,0,2,0,0,1,1,1,1,1,1,1,1,1,1,0,0,2,0,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,0,2,0,0,1,0,0,0,1,1,0,0,0,1,0,0,2,0,-1,-1,-1,-1,-1],
+    [0,0,0,0,0,0,2,0,0,1,0,6,-1,-1,-1,-1,9,0,1,0,0,2,0,0,0,0,0,0],
+    [1,1,1,1,1,1,2,1,1,1,0,-1,-1,-1,-1,-1,-1,0,1,1,1,2,1,1,1,1,1,1],
+    [0,0,0,0,0,0,2,0,0,1,0,7,-1,-1,-1,-1,8,0,1,0,0,2,0,0,0,0,0,0],
+    [-1,-1,-1,-1,-1,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,2,0,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,0,2,0,0,1,1,1,1,1,5,1,1,1,1,0,0,2,0,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,2,0,-1,-1,-1,-1,-1],
+    [0,0,0,0,0,0,2,0,0,1,0,0,0,0,0,0,0,0,1,0,0,2,0,0,0,0,0,0],
+    [0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0],
+    [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0],
+    [0,2,0,0,0,0,2,0,0,0,0,0,2,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0],
+    [0,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,0],
+    [0,0,0,2,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,0],
+    [0,0,0,2,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,2,0,0,0],
+    [0,2,2,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,0,0,2,2,2,2,2,2,0],
+    [0,2,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,2,0],
+    [0,3,0,0,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,0,0,3,0],
+    [0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+]
 
 # Wall: 0
 # Leere Fläche: 1
@@ -59,99 +61,132 @@ new_map = map.copy()
 for x in range(len(new_map)):
     new_map[x] = map[x].copy()
 
-window = tk.Tk()
+
+window = Tk()
 window.geometry('%dx%d+%d+%d' % (560, 640, 360, 40))
+image = Image.open("PacMan.png")
+
+pacman_right = ImageTk.PhotoImage(image)
+pacman_up = ImageTk.PhotoImage(image.rotate(90))
+pacman_down = ImageTk.PhotoImage(image.rotate(-90))
+pacman_left = ImageTk.PhotoImage(image.rotate((180)))
+
+image = Image.open("Pinky.png")
+pinky_image = ImageTk.PhotoImage(image)
+image = Image.open("Clyde.png")
+clyde_image = ImageTk.PhotoImage(image)
+image = Image.open("Inky.png")
+inky_image = ImageTk.PhotoImage(image)
+image = Image.open("Blinky.png")
+blinky_image = ImageTk.PhotoImage(image)
+image = Image.open("BlueGhost.png")
+vulnerable_image = ImageTk.PhotoImage(image)
 
 def initialize_gui():
-    label1 = tk.Label(window, height=1, width=79, background="green", text='Score: 0')
+    label1 = Label(window, height=1, width=79, background="green", text='Score: 0')
     label1.grid(row=0, columnspan=28)
     for x in range(len(map)):
         for y in range(len(map[x])):
             if map[x][y] == 0:
-                frame1 = tk.Frame(window, height=20, width=20, background="blue4")
+                frame1 = Frame(window, height=20, width=20, background="blue4")
                 frame1.grid(row=x+1, column=y)
             elif map[x][y] == 1 or map[x][y] == -1:
-                frame1 = tk.Frame(window, height=20, width=20, background="black")
+                frame1 = Frame(window, height=20, width=20, background="black")
                 frame1.grid(row=x+1, column=y)
             elif map[x][y] == 2:
-                dot = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
+                dot = Canvas(window, height=20, width=20, background="black", highlightthickness=0)
                 dot.create_oval(7, 7, 13, 13, fill="gold")
                 dot.grid(row=x+1, column=y)
             elif map[x][y] == 3:
-                dot = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
+                dot = Canvas(window, height=20, width=20, background="black", highlightthickness=0)
                 dot.create_oval(3, 3, 17, 17, fill="gold")
                 dot.grid(row=x+1, column=y)
             elif map[x][y] == 5:
-                dot = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                dot.create_oval(1, 1, 19, 19, fill="yellow")
-                dot.grid(row=x+1, column=y)
+                figure = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                figure.create_image(1, 1, anchor=NW, image=pacman_right)
+                figure.grid(row=x + 1, column=y)
             elif map[x][y] == 6:    #Pinky
-                ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                ghost.create_oval(1, 1, 19, 19, fill="HotPink2")
-                ghost.grid(row=x+1, column=y)
+                ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                ghost.create_image(1, 1, anchor=NW, image=pinky_image)
+                ghost.grid(row=x + 1, column=y)
             elif map[x][y] == 7:    #Clyde
-                ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                ghost.create_oval(1, 1, 19, 19, fill="dark orange")
-                ghost.grid(row=x+1, column=y)
+                ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                ghost.create_image(1, 1, anchor=NW, image=clyde_image)
+                ghost.grid(row=x + 1, column=y)
             elif map[x][y] == 8:    #Inky
-                ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                ghost.create_oval(1, 1, 19, 19, fill="cyan")
-                ghost.grid(row=x+1, column=y)
+                ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                ghost.create_image(1, 1, anchor=NW, image=inky_image)
+                ghost.grid(row=x + 1, column=y)
             elif map[x][y] == 9:    #Blinky
-                ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                ghost.create_oval(1, 1, 19, 19, fill="red")
-                ghost.grid(row=x+1, column=y)
+                ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                ghost.create_image(1, 1, anchor=NW, image=blinky_image)
+                ghost.grid(row=x + 1, column=y)
+
 def redraw():
     global map
+    global pacman_image
     for x in range(len(map)):
         for y in range(len(map[x])):
             if map[x][y] != new_map[x][y]:
                 if new_map[x][y] == 1 or new_map[x][y] == -1:
-                    frame1 = tk.Frame(window, height=20, width=20, background="black")
+                    frame1 = Frame(window, height=20, width=20, background="black")
                     frame1.grid(row=x+1, column=y)
                 elif new_map[x][y] == 2:
-                    dot = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
+                    dot = Canvas(window, height=20, width=20, background="black", highlightthickness=0)
                     dot.create_oval(7, 7, 13, 13, fill="gold")
                     dot.grid(row=x+1, column=y)
                 elif new_map[x][y] == 3:
-                    dot = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
+                    dot = Canvas(window, height=20, width=20, background="black", highlightthickness=0)
                     dot.create_oval(3, 3, 17, 17, fill="gold")
                     dot.grid(row=x+1, column=y)
                 elif new_map[x][y] == 5:
-                    dot = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    dot.create_oval(1, 1, 19, 19, fill="yellow")
-                    dot.grid(row=x+1, column=y)
+                    if pacman_direction == 1:
+                        figure = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                        figure.create_image(1, 1, anchor=NW, image=pacman_up)
+                        figure.grid(row=x+1, column=y)
+                    elif pacman_direction == 2:
+                        figure = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                        figure.create_image(1, 1, anchor=NW, image=pacman_down)
+                        figure.grid(row=x+1, column=y)
+                    elif pacman_direction == 3:
+                        figure = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                        figure.create_image(1, 1, anchor=NW, image=pacman_left)
+                        figure.grid(row=x+1, column=y)
+                    elif pacman_direction == 4:
+                        figure = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                        figure.create_image(1, 1, anchor=NW, image=pacman_right)
+                        figure.grid(row=x+1, column=y)
                 elif new_map[x][y] == 6:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="HotPink2")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=pinky_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 7:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="dark orange")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=clyde_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 8:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="cyan")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=inky_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 9:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="red")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=blinky_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 10:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="blue2")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=vulnerable_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 11:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="blue2")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=vulnerable_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 12:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="blue2")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=vulnerable_image)
                     ghost.grid(row=x + 1, column=y)
                 elif new_map[x][y] == 13:
-                    ghost = tk.Canvas(window, height=20, width=20, background="black", highlightthickness=0)
-                    ghost.create_oval(1, 1, 19, 19, fill="blue2")
+                    ghost = Canvas(window, width=20, height=20, background="black", highlightthickness=0)
+                    ghost.create_image(1, 1, anchor=NW, image=vulnerable_image)
                     ghost.grid(row=x + 1, column=y)
     for x in range(len(new_map)):
         map[x] = new_map[x].copy()
@@ -365,13 +400,13 @@ def move_ghost_random(current_x, current_y):
                 cache_blinky = cache
 def game_over_check():
     if eaten_coins >= 242:
-        label1 = tk.Label(window, height=1, width=79, background="green", text='You Win!')
+        label1 = Label(window, height=1, width=79, background="green", text='You Win!')
         label1.grid(row=0, columnspan=28)
     elif pacman_x == 0:
-        label1 = tk.Label(window, height=1, width=79, background="green", text='Du hast gegen sich random bewegenden Geister verloren du Lowperformer!')
+        label1 = Label(window, height=1, width=79, background="green", text='Du hast gegen sich random bewegenden Geister verloren du Lowperformer!')
         label1.grid(row=0, columnspan=28)
     else:
-        label1 = tk.Label(window, height=1, width=79, background="green", text='Score: ' + str(score))
+        label1 = Label(window, height=1, width=79, background="green", text='Score: ' + str(score))
         label1.grid(row=0, columnspan=28)
         move_pacman()
         move_ghost()
