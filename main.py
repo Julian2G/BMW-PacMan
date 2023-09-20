@@ -1,6 +1,7 @@
 from tkinter import *
 import random
 from PIL import Image, ImageTk
+import time
 
 map = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -55,6 +56,7 @@ cache_pinky = -1
 cache_clyde = -1
 cache_inky = -1
 cache_blinky = -1
+game_started = False
 
 
 new_map = map.copy()
@@ -63,14 +65,15 @@ for x in range(len(new_map)):
 
 
 window = Tk()
+window.title("PacMan für Highperformer")
 window.geometry('%dx%d+%d+%d' % (560, 640, 360, 40))
-image = Image.open("PacMan.png")
 
+image = Image.open("PacMan.png")
 pacman_right = ImageTk.PhotoImage(image)
 pacman_up = ImageTk.PhotoImage(image.rotate(90))
 pacman_down = ImageTk.PhotoImage(image.rotate(-90))
 pacman_left = ImageTk.PhotoImage(image.rotate((180)))
-
+window.iconphoto(True, pacman_right)
 image = Image.open("Pinky.png")
 pinky_image = ImageTk.PhotoImage(image)
 image = Image.open("Clyde.png")
@@ -411,8 +414,9 @@ def game_over_check():
         move_pacman()
         move_ghost()
 def tick():
-    game_over_check()
-    redraw()
+    if pacman_direction > 0:
+        game_over_check()
+        redraw()
     window.after(200, tick)
 def change_direction(new_direction_code):
     global pacman_direction
@@ -422,7 +426,6 @@ window.bind('<Up>', lambda event: change_direction(1))
 window.bind('<Down>', lambda event: change_direction(2))
 window.bind('<Left>', lambda event: change_direction(3))
 window.bind('<Right>', lambda event: change_direction(4))
-
 initialize_gui()
 tick()
 window.mainloop()
